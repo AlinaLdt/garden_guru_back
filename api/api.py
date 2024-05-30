@@ -11,6 +11,9 @@ client = OpenAI()
 # Set OpenAI API key
 openai_api_key = os.environ["OPENAI_API_KEY"]
 
+# System Prompt for the chatbot
+system_prompt = os.environ ["SYSTEM_PROMPT"]
+
 # Initialize the OpenAI API client
 openai.api_key = openai_api_key
 
@@ -54,7 +57,7 @@ def handle_user_question(plant_class, user_question):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo-16k",
         messages=[
-            {"role": "system", "content": f"You are in the role of a plant expert. You are witty and wise. You have given care tips for a {plant_class}. Use no more than 200 words."},
+            {"role": "system", "content": system_prompt.format(plant_class = plant_class)},
             {"role": "user", "content": f"{user_question}"}
         ],
         temperature=0.7,
