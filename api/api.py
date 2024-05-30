@@ -38,7 +38,7 @@ def get_care_tips(plant_class):
         model="gpt-3.5-turbo-16k",
                 messages=[
             {"role": "system", "content": f"You are in the role of a plant expert. You are witty and wise. You give care tips for a {plant_class}. Always mention how much or how often the plant needs to be watered and how much sunlight it needs. Mention special soil/fertilizer if necessary."},
-            {"role": "user", "content": f"Give some care tips for a {plant_class}. Use no more than 180 words."}
+            {"role": "user", "content": f"Give some care tips for a {plant_class}. Use no more than 200 words."}
         ],
         temperature=0.7,
         max_tokens=100,
@@ -54,7 +54,7 @@ def handle_user_question(plant_class, user_question):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo-16k",
         messages=[
-            {"role": "system", "content": f"You are in the role of a plant expert. You are witty and wise. You have given care tips for a {plant_class}. Use no more than 100 words."},
+            {"role": "system", "content": f"You are in the role of a plant expert. You are witty and wise. You have given care tips for a {plant_class}. Use no more than 200 words."},
             {"role": "user", "content": f"{user_question}"}
         ],
         temperature=0.7,
