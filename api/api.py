@@ -102,6 +102,3 @@ def home():
 # Running the Application
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
-
-
-# The script sets up a FastAPI application with two endpoints: one for predicting plant care tips from an uploaded image and another for a simple Q&A chatbot.
